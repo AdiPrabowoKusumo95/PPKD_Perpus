@@ -5,15 +5,19 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Data Level</h5>
+                    <h5 class="card-title">Data Buku</h5>
                     <!-- Table with stripped rows -->
-                    <a href="{{ route('level.create') }}" type="button" class="btn btn-outline-primary">Tambah</a>
+                    <a href="{{ route('buku.create') }}" type="button" class="btn btn-outline-primary">Tambah</a>
                     <table class="table datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Level</th>
-                                <th>Keterangan</th>
+                                <th>Nama Buku</th>
+                                <th>Penerbit</th>
+                                <th>Quantity</th>
+                                <th>Deskripsi</th>
+                                <th>Penulis</th>
+                                <th>Genre</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -21,12 +25,16 @@
                             @foreach ($datas as $data)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->nama_level }}</td>
-                                    <td>{{ $data->keterangan }}</td>
+                                    <td>{{ $data->nama_buku }}</td>
+                                    <td>{{ $data->penerbit }}</td>
+                                    <td>{{ $data->qty }}</td>
+                                    <td>{{ $data->deskripsi }}</td>
+                                    <td>{{ $data->penulis }}</td>
+                                    <td>{{ $data->genre }}</td>
                                     <td>
-                                        <a href="{{ route('level.edit', $data->id) }}" type="button" class="btn btn-outline-primary">Ubah</a>
+                                        <a href="{{ route('buku.edit', $data->id) }}" type="button" class="btn btn-outline-primary">Ubah</a>
 
-                                        <form action="{{ route('level.destroy', $data->id) }}" method="POST">
+                                        <form action="{{ route('buku.destroy', $data->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-outline-primary">Hapus</button>

@@ -5,15 +5,16 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Data Level</h5>
+                    <h5 class="card-title">Data Anggota</h5>
                     <!-- Table with stripped rows -->
-                    <a href="{{ route('level.create') }}" type="button" class="btn btn-outline-primary">Tambah</a>
+                    <a href="{{ route('anggota.create') }}" type="button" class="btn btn-outline-primary">Tambah</a>
                     <table class="table datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Level</th>
-                                <th>Keterangan</th>
+                                <th>Nama Anggota</th>
+                                <th>Email</th>
+                                <th>No Telpon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -21,12 +22,13 @@
                             @foreach ($datas as $data)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->nama_level }}</td>
-                                    <td>{{ $data->keterangan }}</td>
+                                    <td>{{ $data->nama_anggota }}</td>
+                                    <td>{{ $data->email }}</td>
+                                    <td>{{ $data->no_tlp }}</td>
                                     <td>
-                                        <a href="{{ route('level.edit', $data->id) }}" type="button" class="btn btn-outline-primary">Ubah</a>
+                                        <a href="{{ route('anggota.edit', $data->id) }}" type="button" class="btn btn-outline-primary">Ubah</a>
 
-                                        <form action="{{ route('level.destroy', $data->id) }}" method="POST">
+                                        <form action="{{ route('anggota.destroy', $data->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="btn btn-outline-primary">Hapus</button>

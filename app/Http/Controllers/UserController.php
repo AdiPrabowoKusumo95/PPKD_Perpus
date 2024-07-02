@@ -37,12 +37,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_level' => 'required',
-            'nama' => 'required',
-            'email' => 'required|email|unique:user',
-            'password' => 'required'
-        ]);
+        User::create($request->all());
+        return redirect()->to('user')->with('message', 'Data Berhasil ditambah');
     }
 
     /**
@@ -69,15 +65,21 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'. $id,
-            'id_level' => 'required'
+        $edit = User::find($id);
+        if ($request->password) {
+            $password = Hash::make($request->password);
+        } else {
+            $password = $edit->password;
+        }
+
+        User::where('id', $id)->update([
+            'nama' => $request->nama,
+            'id_level' =>$request->id_level,
+            'email' => $request->email,
+            'password' => $password,
         ]);
-        $user = User::findOrFail($id);
-        $userData = $request->all();
-        $user->update($userData);
-        return redirect()->to('user')->with('success', 'User updated successfully.');
+
+        return redirect()->to('user')->with('message', 'User berhasil diubah');
     }
 
     /**

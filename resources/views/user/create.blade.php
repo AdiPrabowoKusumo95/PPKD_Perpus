@@ -9,7 +9,7 @@
                 @csrf
                 <div class="col-12">
                     <label for="inputName" class="form-label">Nama Pengguna</label>
-                    <input type="text" class="form-control" name="name" id="inputName">
+                    <input type="text" class="form-control" name="nama" id="inputName">
                 </div>
                 <div class="col-12">
                     <label for="inputEmail" class="form-label">Email</label>

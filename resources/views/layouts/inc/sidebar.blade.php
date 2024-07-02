@@ -26,17 +26,17 @@
                     <i class="bi bi-circle"></i><span>Level</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="{{ route('jurusan.index') }}">
-                    <i class="bi bi-circle"></i><span>Jurusan</span>
+            <li>
+                <a href="{{ route('anggota.index') }}">
+                    <i class="bi bi-circle"></i><span>Anggota</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('gelombang.index') }}">
-                    <i class="bi bi-circle"></i><span>Gelombang</span>
+                <a href="{{ route('buku.index') }}">
+                    <i class="bi bi-circle"></i><span>Buku</span>
                 </a>
             </li>
-            @endif
+            {{-- @endif
             <li>
                 <a href="{{ route('peserta.index') }}">
                     <i class="bi bi-circle"></i><span>Peserta</span>

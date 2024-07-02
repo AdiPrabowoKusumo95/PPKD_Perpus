@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LevelController;
@@ -12,4 +14,6 @@ Route::get('aksilogout', [LoginController::class, 'aksilogout'])->name('aksilogo
 Route::resource('dashboard', DashboardController::class);
 Route::resource('user', UserController::class);
 Route::resource('level', LevelController::class);
+Route::resource('anggota', AnggotaController::class);
+Route::resource('buku', BukuController::class);
 
