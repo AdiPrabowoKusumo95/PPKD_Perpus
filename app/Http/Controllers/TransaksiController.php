@@ -2,67 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
+use App\Models\Buku;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public function Peminjaman()    {
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $datas = Peminjaman::get();
+        return view('peminjaman.index', compact('datas'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function TambahPeminjaman()
     {
-        //
+        $kode_transaksi = Peminjaman::orderBy('id', 'desc')->first();
+        $huruf = "TR";
+        $urutan = $kode_transaksi->id;
+        $urutan++;
+        $kode_transaksi = $huruf . date("dmY") . sprintf("%03s", $urutan);
+        $peminjams = Anggota::orderBy('id', 'desc')->get();
+        $bukus = Buku::get();
+        return view('peminjaman.create', compact('peminjams', 'kode_transaksi', 'bukus'));
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function AksiTambahPeminjaman(Request $request)
     {
-        //
-    }
+        Peminjaman::create($request->all());
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+        return redirect()->route('peminjaman');
+
+    }
+    public function ShowPeminjaman()
     {
-        //
+        return view('peminjaman.detail');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-
-    public function Peminjaman()
+    public function DeletePeminjaman()
     {
 
     }
@@ -71,4 +45,6 @@ class TransaksiController extends Controller
     {
 
     }
+
+
 }

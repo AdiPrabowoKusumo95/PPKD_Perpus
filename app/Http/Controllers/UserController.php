@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Level;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -38,7 +39,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->to('user')->with('message', 'Data Berhasil ditambah');
+        toast('Data Pengguna Berhasil Ditambah ','success');
+        return redirect()->to('user');
     }
 
     /**
@@ -78,8 +80,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $password,
         ]);
-
-        return redirect()->to('user')->with('message', 'User berhasil diubah');
+        toast('Data Pengguna Berhasil Diubah ','success');
+        return redirect()->to('user');
     }
 
     /**
@@ -89,6 +91,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->to('user')->with('success', 'User deleted successfully.');
+        alert()->success('SuccessAlert','Data Pengguna Berhasil Dihapus');
+        return redirect()->to('user');
     }
 }

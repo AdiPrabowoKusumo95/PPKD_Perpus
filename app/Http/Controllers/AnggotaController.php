@@ -30,6 +30,7 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         Anggota::create($request->all());
+        toast('Data Anggota Berhasil Ditambah ','success');
         return redirect()->to('anggota');
     }
 
@@ -60,6 +61,7 @@ class AnggotaController extends Controller
             'email'=>$request->email,
             'no_tlp'=>$request->no_tlp
         ]);
+        toast('Data Anggota Berhasil Diubah ','success');
         return redirect()->to('anggota');
     }
 
@@ -69,6 +71,7 @@ class AnggotaController extends Controller
     public function destroy(string $id)
     {
         Anggota::where('id', $id)->delete();
+        alert()->success('SuccessAlert','Data Anggota Berhasil Dihapus');
         return redirect()->to('anggota');
     }
 }

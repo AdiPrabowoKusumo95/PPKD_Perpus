@@ -6,6 +6,7 @@ use App\Models\Level;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
+use Alert;
 
 class LevelController extends Controller
 {
@@ -32,6 +33,7 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         Level::create($request->all());
+        toast('Data Level Berhasil Ditambah ','success');
         return redirect()->to('level');
     }
 
@@ -58,8 +60,10 @@ class LevelController extends Controller
     public function update(Request $request, string $id)
     {
         Level::where('id', $id)->update([
-            'nama_level'=>$request->nama_level
+            'nama_level'=>$request->nama_level,
+            'keterangan'=>$request->keterangan
         ]);
+        toast('Data Level Berhasil Diubah ','success');
         return redirect()->to('level');
     }
 
@@ -71,6 +75,7 @@ class LevelController extends Controller
         // $data = Level::findOrFail($id);
         // $data->delete();
         Level::where('id', $id)->delete();
+        alert()->success('SuccessAlert','Data Level Berhasil Dihapus');
         return redirect()->to('level');
 
     }

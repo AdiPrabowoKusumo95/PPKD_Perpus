@@ -30,6 +30,7 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         Buku::create($request->all());
+        toast('Data Buku Berhasil Ditambah ','success');
         return redirect()->to('buku');
     }
 
@@ -63,6 +64,7 @@ class BukuController extends Controller
             'penulis'=>$request->penulis,
             'genre'=>$request->genre
         ]);
+        toast('Data Buku Berhasil Diubah ','success');
         return redirect()->to('buku');
     }
 
@@ -72,6 +74,7 @@ class BukuController extends Controller
     public function destroy(string $id)
     {
         Buku::where('id', $id)->delete();
+        alert()->success('SuccessAlert','Data Buku Berhasil Dihapus');
         return redirect()->to('buku');
     }
 }

@@ -15,7 +15,7 @@
           <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            {{-- @if (Auth::user()->id_level == 1) --}}
+            @if (Auth::user()->id_level == 1)
             <li>
                 <a href="{{ route('user.index') }}">
                     <i class="bi bi-circle"></i><span>Pengguna</span>
@@ -26,6 +26,7 @@
                     <i class="bi bi-circle"></i><span>Level</span>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="{{ route('anggota.index') }}">
                     <i class="bi bi-circle"></i><span>Anggota</span>
@@ -36,9 +37,8 @@
                     <i class="bi bi-circle"></i><span>Buku</span>
                 </a>
             </li>
-            {{-- @endif
-            <li>
-                <a href="{{ route('peserta.index') }}">
+            {{-- <li>
+                <a href="#">
                     <i class="bi bi-circle"></i><span>Peserta</span>
                 </a>
             </li> --}}
@@ -47,12 +47,12 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Master Data Peserta</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Transaksi</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Peserta</span>
+            <a href="{{ route('peminjaman') }}">
+              <i class="bi bi-circle"></i><span>Pinjam Buku</span>
             </a>
           </li>
           <li>

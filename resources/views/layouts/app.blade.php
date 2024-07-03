@@ -11,6 +11,8 @@
 
     @include('layouts.inc.css')
 
+
+
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
@@ -29,6 +31,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
