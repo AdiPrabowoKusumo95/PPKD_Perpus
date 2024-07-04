@@ -1,3 +1,8 @@
+<?php
+use App\Models\Buku;
+$bukus = Buku::get();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,6 @@
     <meta content="" name="keywords">
 
     @include('layouts.inc.css')
-
 
 
     <!-- Google Fonts -->

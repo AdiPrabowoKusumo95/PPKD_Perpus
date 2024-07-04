@@ -26,7 +26,7 @@ Route::middleware(['auth', 'Admin'])->group(function (){
 
 Route::get('peminjaman', [TransaksiController::class, 'Peminjaman'])->name('peminjaman');
 Route::get('tambah-peminjaman', [TransaksiController::class, 'TambahPeminjaman'])->name('tambah-peminjaman');
-Route::post('tambah-peminjaman', [TransaksiController::class, 'AksiTambahPeminjaman'])->name('aksitambah-peminjaman');
+Route::post('aksitambah-peminjaman', [TransaksiController::class, 'AksiTambahPeminjaman'])->name('aksitambah-peminjaman');
 Route::get('show-peminjaman/{id}', [TransaksiController::class, 'ShowPeminjaman'])->name('show-peminjaman');
 Route::get('delete-peminjaman/{id}', [TransaksiController::class, 'DeletePeminjaman'])->name('delete-peminjaman');
 

@@ -7,6 +7,7 @@
 <script src="{{asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
 <script src="{{asset('NiceAdmin/assets/vendor/tinymce/tinymce.min.js')}}"></script>
 <script src="{{asset('NiceAdmin/assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="{{asset('jquery-3.7.1.min.js')}}"></script>
 
 <!-- Template Main JS File -->
 <script src="{{asset('NiceAdmin/assets/js/main.js')}}"></script>
@@ -30,5 +31,25 @@
         } else {
             preview.innerHTML = 'Preview tidak tersedia';
         }
+    });
+</script>
+
+<script>
+    $('.btn-add').click(function() {
+        let tbody = $('tbody');
+        let newTr = "<tr>";
+        newTr += "<td>";
+        newTr += "<select class='form-control' name='id_buku[]'>";
+        newTr += "<option>Pilih Buku</option>"
+        @foreach ($bukus as $buku)
+            newTr += "<option value='{{ $buku->id }}'>{{ $buku->nama_buku }}</option>"
+        @endforeach
+        newTr += "</select>";
+        newTr += "</td>";
+        newTr += "<td><input type='date' name='tanggal_pinjam[]' class='form-control'></td>";
+        newTr += "<td><input type='date' name='tanggal_pengembalian[]' class='form-control'></td>";
+        newTr += "<td><input type='text' name='keterangan[]' class='form-control'></td>";
+        newTr += "</tr>";
+        tbody.append(newTr);
     });
 </script>
