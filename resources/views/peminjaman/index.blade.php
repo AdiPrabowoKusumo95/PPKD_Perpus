@@ -15,7 +15,7 @@
                                 <th>No Transaksi</th>
                                 <th>Nama Anggota</th>
                                 <th>Aksi</th>
-                            </tr>
+                                
                         </thead>
                         <tbody>
                             @foreach ($datas as $data)

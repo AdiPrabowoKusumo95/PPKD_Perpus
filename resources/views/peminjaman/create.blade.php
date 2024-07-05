@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <label for="inputNama" class="form-label">Nama Peminjam</label>
                     <select  class="form-control"  name="id_anggota" id="inputNama" required>
-                        <option value="">Pilih Anggota</option>
+                        <option value="" selected>Pilih Anggota</option>
                         @foreach ($peminjams as $peminjam)
                             <option value="{{ $peminjam->id }}">{{ $peminjam->nama_anggota }}</option>
                         @endforeach

@@ -1,3 +1,7 @@
+<?php
+use App\Models\Buku;
+$bukus = Buku::get();
+?>
 <!-- Vendor JS Files -->
 <script src="{{asset('NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
 <script src="{{asset('NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -39,16 +43,16 @@
         let tbody = $('tbody');
         let newTr = "<tr>";
         newTr += "<td>";
-        newTr += "<select class='form-control' name='id_buku[]'>";
-        newTr += "<option>Pilih Buku</option>"
+        newTr += "<select required class='form-control' name='id_buku[]'>";
+        newTr += "<option value='' selected>Pilih Buku</option>"
         @foreach ($bukus as $buku)
             newTr += "<option value='{{ $buku->id }}'>{{ $buku->nama_buku }}</option>"
         @endforeach
         newTr += "</select>";
         newTr += "</td>";
-        newTr += "<td><input type='date' name='tanggal_pinjam[]' class='form-control'></td>";
-        newTr += "<td><input type='date' name='tanggal_pengembalian[]' class='form-control'></td>";
-        newTr += "<td><input type='text' name='keterangan[]' class='form-control'></td>";
+        newTr += "<td><input required type='date' name='tanggal_pinjam[]' class='form-control'></td>";
+        newTr += "<td><input required type='date' name='tanggal_pengembalian[]' class='form-control'></td>";
+        newTr += "<td><input required type='text' name='keterangan[]' class='form-control'></td>";
         newTr += "</tr>";
         tbody.append(newTr);
     });

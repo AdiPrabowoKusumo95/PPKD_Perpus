@@ -1,31 +1,94 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Vertical Form</h5>
+    <!DOCTYPE html>
+    <html lang="en">
 
-            <!-- Vertical Form -->
-            <form action="{{ route('anggota.update', $edit->id) }}" method="POST" class="row g-3">
-                @csrf
-                @method('PUT')
-                <div class="col-12">
-                    <label for="inputNama" class="form-label">Nama anggota</label>
-                    <input value="{{ $edit->nama_anggota }}" type="text" class="form-control" name="nama_anggota" id="inputNama">
-                </div>
-                <div class="col-12">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input value="{{ $edit->email }}" type="text" class="form-control" name="email" id="inputEmail">
-                </div>
-                <div class="col-12">
-                    <label for="inputNoTlp" class="form-label">No Telpon</label>
-                    <input value="{{ $edit->no_tlp }}" type="text" class="form-control" name="no_tlp" id="inputNoTlp">
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ url()->previous() }}" type="" class="btn btn-danger">Kembali</a>
-                </div>
-            </form><!-- Vertical Form -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Detail Peminjaman</title>
+        <style>
+            #printtable {
+                text-align: left;
+                margin: 0 auto;
+                width: 20% min-width:fit-content;
+            }
 
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+
+                #printtable,
+                #printtable * {
+                    visibility: visible;
+                }
+
+                #printtable {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="printtable" align="center">
+
+            <h1>Detail Peminjaman</h1>
+            <p>Id Peminjaman : {{ $detailbuku->first()->id_peminjam }}</p>
+            <p>Nama Peminjam : {{ $detailbuku->first()->anggota->nama_anggota }}</p>
+            Nama Buku : <br>
+            <ol>
+                @foreach ($detailbuku as $detail)
+                    <li>{{ $detail->buku->nama_buku }}</li>
+                @endforeach
+            </ol>
+            <p>Tanggal Pinjam : {{ $detailbuku->first()->tanggal_pinjam }}</p>
+            <p>Tanggal Kembali : {{ $detailbuku->first()->tanggal_pengembalian }}</p>
+            <p>Status : {{ $detailbuku->first()->keterangan }}</p>
+
+            <a href="{{ route('peminjaman') }}">Kembali</a> <button onclick="printDiv('printtable')">Print</button>
         </div>
-    </div>
+        <script>
+            function printDiv(divName) {
+                var printContents = document.getElementById(divName).innerHTML;
+                var originalContents = document.body.innerHTML;
+                document.body.innerHTML = printContents;
+                window.print();
+                document.body.innerHTML = originalContents;
+            }
+        </script>
+        <style>
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+
+                #printtable,
+                #printtable * {
+                    visibility: visible;
+                }
+
+                #printtable {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+        </div>
+    </body>
+
+    </html>
 @endsection
