@@ -165,12 +165,8 @@ $user = Auth::user();
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
                     <h6>{{ $user->nama }}</h6>
-                    <span>Web Designer</span>
+                    <span>{{ $user->level->nama_level }}</span>
                 </li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-
                 <li>
                     <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                         <i class="bi bi-person"></i>
@@ -208,12 +204,8 @@ $user = Auth::user();
                     <hr class="dropdown-divider">
                 </li>
 
-                <li>
-
-                </li>
-
             </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+        </li> <!-- End Profile Nav -->
 
     </ul>
 </nav><!-- End Icons Navigation -->
